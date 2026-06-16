@@ -1,0 +1,62 @@
+class ContaBanco {
+  #SaldoAtual;
+  #NomeCliente;
+  #SenhaCliente;
+  #AgenciaCliente;
+  #NumeroConta;
+
+constructor (SaldoAtual, NomeCliente, SenhaCliente, AgenciaCliente, NumeroConta){
+  this.#SaldoAtual = SaldoAtual;
+  this.#NomeCliente = NomeCliente;
+  this.#SenhaCliente = SenhaCliente;
+  this.#AgenciaCliente = AgenciaCliente;
+  this.#NumeroConta = NumeroConta;
+  }
+
+sacavalor(valor){
+  if (valor > this.#SaldoAtual){
+    console.log("Saldo insuficiente");
+  }else{
+    this.#SaldoAtual-=valor;
+    console.log(`Saque de R$${valor} realizado com sucesso!`);
+  }
+}
+
+depositarValor (valor){
+  this.#SaldoAtual += valor;
+  console.log(`Depósito de R$${valor} realizado com sucesso!`);
+  }
+
+validasenha (senha){
+  if (senha == this.#SenhaCliente){
+    console.log('Senha correta, acesso permitido');
+  }else{
+    console.log('Senha incorreta,  por favor tente novamente');
+  }
+}
+
+mostrarDados() {
+  console.log(`Cliente: ${this.#NomeCliente}`);
+  console.log(`Agência: ${this.#AgenciaCliente}`);
+  console.log(`Conta: ${this.#NumeroConta}`);
+}
+  
+versaldo(){
+  console.log(`Saldo Atual: R$${this.#SaldoAtual}`);
+  }
+}
+
+let cliente1 = new ContaBanco (
+  400,
+  "Alanis",
+  "072009",
+  "MercadoPago",
+  "430",
+);
+
+cliente1.versaldo();
+cliente1.depositarValor (300,00);
+cliente1.validasenha (072009);
+cliente1.sacavalor (100,00);
+cliente1.mostrarDados();
+cliente1.versaldo();
